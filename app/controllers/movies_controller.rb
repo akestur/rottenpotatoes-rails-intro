@@ -45,6 +45,7 @@ class MoviesController < ApplicationController
   def sorter
     @movies = Movie.order(title: :asc)
     flash[:notice] = @movies
+    Movie.delete_all
     @movies.each do |movie|
       Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
     end
