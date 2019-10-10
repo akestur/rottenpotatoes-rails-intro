@@ -43,9 +43,9 @@ class MoviesController < ApplicationController
   end
 
   def sorter
-    movies = Movie.order(title: :asc)
+    @movies = Movie.order(title: :asc)
     Movie.delete_all
-    movies.each do |movie|
+    @movies.each do |movie|
       movie_hash = {:id => id, :title => movie.title, :rating => movie.rating, :release_date => movie.release_date, :description => movie.description}
       Movie.create!(movie_hash)
     end
