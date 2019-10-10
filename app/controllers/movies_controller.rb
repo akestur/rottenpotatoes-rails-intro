@@ -43,7 +43,8 @@ class MoviesController < ApplicationController
   end
 
   def sorter
-    Movie.order(title: :asc)
+    @movies = Movie.order(title: :asc)
+    @movies.save
     redirect_to movies_path
   end
 
