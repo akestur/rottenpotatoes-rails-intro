@@ -44,11 +44,11 @@ class MoviesController < ApplicationController
 
   def sorter
     movies = Movie.order(title: :asc)
-    Movie.delete_all
-    movies.each do |movie|
-      movie_hash = {:title => movie.title, :rating => movie.rating, :release_date => movie.release_date, :description => movie.description}
-      Movie.create!(movie_hash)
-    end
+    # Movie.delete_all
+    # movies.each do |movie|
+    #   movie_hash = {:title => movie.title, :rating => movie.rating, :release_date => movie.release_date, :description => movie.description}
+    #   Movie.create!(movie_hash)
+    # end
     redirect_to movies_path
   end
 
