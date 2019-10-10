@@ -43,8 +43,11 @@ class MoviesController < ApplicationController
   end
 
   def sorter
-    @movies = Movie.order("title ASC")
-    #Movie.save!
+    @movies_new = Movie.order("title ASC")
+    movies.each do |movie|
+      movie.destroy
+    movies_new.each do |movie|
+      Movie.create!(movie)
     redirect_to movies_path
   end
 
