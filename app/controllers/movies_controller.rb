@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
 
   def sorter
     movies = Movie.order(title: :asc)
-    Movie.delete_all
+    # Movie.delete_all
     movies.each do |movie|
       Movie.create!(movie)
     end
