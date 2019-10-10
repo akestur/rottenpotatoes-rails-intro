@@ -43,8 +43,12 @@ class MoviesController < ApplicationController
   end
 
   def sorter
-    @movies = Movie.order(title: :asc)
-    flash[:notice] = @movies
+    @movies_new = Movie.order(title: :asc)
+    @movies = Movie.all
+    @movies.each do |movie|
+      movie.destroy
+    @movies.new.each do |movie|
+      Movie.create!(movie)
     redirect_to movies_path
   end
 
