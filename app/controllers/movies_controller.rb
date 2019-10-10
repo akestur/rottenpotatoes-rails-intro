@@ -44,6 +44,7 @@ class MoviesController < ApplicationController
 
   def sorter
     @movies = Movie.order("Movie Title")
+    flash[:notice] = "oh boy"
     redirect_to movies_path
   end
 
