@@ -44,6 +44,7 @@ class MoviesController < ApplicationController
 
   def sorter
     @movies_new = Movie.order("title ASC")
+    Movie.delete_all
     @movies_new.each do |movie|
       Movie.create!(movie)
     redirect_to movies_path
