@@ -47,7 +47,8 @@ class MoviesController < ApplicationController
     #Movie.delete_all
     flash[:notice] = @movies
     @movies.each do |movie|
-      @movie = Movie.find movie['id']
+      @movie_del = Movie.find(movie['id'])
+      @movie_del.destroy
       Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
     end
     redirect_to movies_path
