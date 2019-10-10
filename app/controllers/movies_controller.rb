@@ -43,8 +43,8 @@ class MoviesController < ApplicationController
   end
 
   def sorter
-    @movies = Movie.order("Movie Title")
-    flash[:notice] = "oh boy"
+    help= Movie.order("Movie Title")
+    help.save!
     redirect_to movies_path
   end
 
