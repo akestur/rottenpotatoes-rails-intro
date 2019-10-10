@@ -43,10 +43,11 @@ class MoviesController < ApplicationController
   end
 
   def sorter
-    @movies_new = Movie.order(title: :asc)
+    movies = Movie.order(title: :asc)
     Movie.delete_all
-    @movies_new.each do |movie|
+    movies.each do |movie|
       Movie.create!(movie)
+    end
     redirect_to movies_path
   end
 
