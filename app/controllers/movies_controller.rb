@@ -46,7 +46,7 @@ class MoviesController < ApplicationController
     @movies = Movie.order(title: :asc)
     flash[:notice] = @movies
     @movies.each do |movie|
-      Movie.create!(movie)
+      Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
     end
     redirect_to movies_path
   end
