@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
 
   def sorter
     @movies = Movie.order(title: :asc)
-    @movies.save
+    @movies.update_attributes!(movie_params)
     redirect_to movies_path
   end
 
