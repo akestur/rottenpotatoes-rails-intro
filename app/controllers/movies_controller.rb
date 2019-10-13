@@ -54,4 +54,16 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def release_date_sorter
+    @movies = Movie.order(release_date: :asc)
+    # Movie.delete_all
+    # flash[:notice] = @movies
+    @movies.each do |movie|
+      @movie_del = Movie.find(movie['id'])
+      @movie_del.destroy
+      Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
+    end
+    redirect_to movies_path
+  end
+
 end

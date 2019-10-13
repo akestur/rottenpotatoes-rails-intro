@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   get  'movies_title_sorter'    => 'movies#title_sorter'
+  get  'movies_release_date_sorter' => 'movies#release_date_sorter'
 
   # You can have the root of your site routed with "root"
   root 'movies#index'
