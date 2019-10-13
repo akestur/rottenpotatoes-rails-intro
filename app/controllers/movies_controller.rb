@@ -12,6 +12,8 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    @title_toggle = "p-3 mb-2 bg-warning text-dark"
+    @date_toggle = "p-3 mb-2 bg-warning text-dark"
     if (params[:sort_order])
       @sort_type = params[:sort_order]
       if @sort_type == "title"
