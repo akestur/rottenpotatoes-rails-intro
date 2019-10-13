@@ -15,11 +15,9 @@ class MoviesController < ApplicationController
     if (params[:sort_order])
       @sort_type = params[:sort_order]
       if @sort_type == "title"
-        flash[:notice] = "title in"
         @movies = Movie.order(title: :asc)
       end
       if @sort_type == "release_date"
-        flash[:notice] = "release date in"
         @movies = Movie.order(release_date: :asc)
       end
     end
