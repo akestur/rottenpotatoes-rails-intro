@@ -66,6 +66,7 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
+    store_params_in_session
   end
 
   def new
