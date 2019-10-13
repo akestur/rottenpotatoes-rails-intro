@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     # session.clear
-    flash[:notice] = session
+    flash[:notice] = params
     @movies =  Movie.all
     @all_ratings = ['G','PG','PG-13','R']
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
