@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
   end
 
   def store_movies_from_session
-    session[:movies] = @movies
+    session[:movies] = @movies.to_yaml
   end
 
   public
