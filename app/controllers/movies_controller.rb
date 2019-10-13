@@ -11,7 +11,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    session.clear
     @movies =  Movie.all
     flash[:notice] = session
     @all_ratings = ['G','PG','PG-13','R']
@@ -50,7 +49,7 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
-    session[:movies] = @movies
+    # session[:movies] = @movies
   end
 
   def new
