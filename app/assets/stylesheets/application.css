@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-.highlight_header{
-  background-color: #ccc;
+.hilite{
+  .bg-warning
 }
 
 .normal_header{
