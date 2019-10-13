@@ -11,14 +11,14 @@ class MoviesController < ApplicationController
   end
 
   def index
-    session.clear
     @movies =  Movie.all
     @all_ratings = ['G','PG','PG-13','R']
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
-    if (params[:ratings])
+    if (params[:ratings] || session[:ratings])
+      session[:ratings] = params[:ratings]
       @curr_ratings = []
-      @ratings_hash = params[:ratings]
+      @ratings_hash = params[:ratings] || session[:ratings]
       if @ratings_hash["G"]
         @curr_ratings << "G"
       end
@@ -33,11 +33,12 @@ class MoviesController < ApplicationController
       end
       @movies = Movie.where(rating: @curr_ratings)
     end
-    if !(params[:ratings])
+    if !(params[:ratings] || session[:ratings])
       @movies = Movie.where(rating: @all_ratings)
     end
-    if (params[:sort_order])
-      @sort_type = params[:sort_order]
+    if (params[:sort_order] || session[:sort_order])
+      session[:sort_order] = params[:sort_order]
+      @sort_type = params[:sort_order] || session[:sort_order]
       if @sort_type == "title"
         @title_toggle = "hilite"
         @date_toggle = "p-3 mb-2 bg-warning text-dark"
@@ -49,7 +50,6 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
-    # session[:movies] = @movies
   end
 
   def new
