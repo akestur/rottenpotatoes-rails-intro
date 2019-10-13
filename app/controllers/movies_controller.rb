@@ -45,6 +45,7 @@ class MoviesController < ApplicationController
       end
     end
     flash[:notice] = @curr_ratings
+    @movies = Movie.where(rating: @curr_ratings)
   end
 
   def new
