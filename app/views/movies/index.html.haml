@@ -5,7 +5,7 @@
   Include:
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag{:id => "ratings_[#{rating}]"} "ratings[#{rating}]"
+    = check_box_tag "ratings[#{rating}]"
   = submit_tag{:id => "ratings_submit"} 'Refresh', :class => 'btn btn-primary'
 
 
