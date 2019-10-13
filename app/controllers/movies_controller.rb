@@ -28,7 +28,23 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
-    flash[:notice] = params
+    if (params[:ratings])
+      @curr_ratings = []
+      @ratings_hash = params[:ratings]
+      if @ratings_hash["G"]
+        @curr_ratings << "G"
+      end
+      if @ratings_hash["PG"]
+        @curr_ratings << "PG"
+      end
+      if @ratings_hash["PG-13"]
+        @curr_ratings << "PG-13"
+      end
+      if @ratings_hash["R"]
+        @curr_ratings << "R"
+      end
+    end
+    flash[:notice] = @curr_ratings
   end
 
   def new
