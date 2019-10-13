@@ -24,7 +24,6 @@ class MoviesController < ApplicationController
       end
     end
     #@movies = Movie.all
-    render :index
   end
 
   def new
