@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
-  before_action :get_params_from_session
-  after_action  :store_params_in_session
+  before_filter :get_params_from_session
+  after_filter  :store_params_in_session
 
   private
 
