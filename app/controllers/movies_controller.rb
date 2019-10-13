@@ -1,23 +1,5 @@
 class MoviesController < ApplicationController
 
-  # before_action :get_movies_from_session
-  # after_action  :store_movies_from_session
-  #
-  # private
-  #
-  # def get_movies_from_session
-  #   @movies = Movie.all
-  #   if !session[:movies].blank?
-  #     @movies = YAML.load(session[:movies])
-  #   end
-  # end
-  #
-  # def store_movies_from_session
-  #   session[:movies] = @movies.to_yaml
-  # end
-
-  public
-
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)
   end
@@ -29,7 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
-    # @movies = Movie.all
+    session.clear
+    @movies = session[:movies] || Movie.all
     flash[:notice] = session
     @all_ratings = ['G','PG','PG-13','R']
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
@@ -67,6 +50,7 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
+    session[:movies] = @movies
   end
 
   def new
