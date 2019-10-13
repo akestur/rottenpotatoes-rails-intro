@@ -1,5 +1,23 @@
 class MoviesController < ApplicationController
 
+  before_action :get_movies_from_session
+  after_action  :store_movies_in_session
+
+  private
+
+  def get_movies_from_session
+    @movies = Movie.all
+    if !session[:movies].blank?
+      @movies = YAML.load(session[:movies])
+    end
+  end
+
+  def store_movies_in_session
+    session[:movies] = @movies.to_yaml
+  end
+
+  public
+
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)
   end
