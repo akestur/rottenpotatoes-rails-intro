@@ -15,19 +15,6 @@ class MoviesController < ApplicationController
     @all_ratings = ['G','PG','PG-13','R']
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
-    if (params[:sort_order])
-      @sort_type = params[:sort_order]
-      if @sort_type == "title"
-        @title_toggle = "hilite"
-        @date_toggle = "p-3 mb-2 bg-warning text-dark"
-        @movies = Movie.order(title: :asc)
-      end
-      if @sort_type == "release_date"
-        @title_toggle = "p-3 mb-2 bg-warning text-dark"
-        @date_toggle = "hilite"
-        @movies = Movie.order(release_date: :asc)
-      end
-    end
     if (params[:ratings])
       @curr_ratings = []
       @ratings_hash = params[:ratings]
@@ -45,9 +32,21 @@ class MoviesController < ApplicationController
       end
       @movies = Movie.where(rating: @curr_ratings)
     end
-    flash[:notice] = @all_ratings
     if !(params[:ratings])
       @movies = Movie.where(rating: @all_ratings)
+    end
+    if (params[:sort_order])
+      @sort_type = params[:sort_order]
+      if @sort_type == "title"
+        @title_toggle = "hilite"
+        @date_toggle = "p-3 mb-2 bg-warning text-dark"
+        @movies = Movie.order(title: :asc)
+      end
+      if @sort_type == "release_date"
+        @title_toggle = "p-3 mb-2 bg-warning text-dark"
+        @date_toggle = "hilite"
+        @movies = Movie.order(release_date: :asc)
+      end
     end
   end
 
