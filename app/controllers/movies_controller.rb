@@ -1,16 +1,18 @@
 class MoviesController < ApplicationController
 
-  before_filter :get_params_from_session
-  after_filter  :store_params_in_session
+  before_action :get_movies_from_session
+  after_action  :store_movies_from_session
 
   private
 
-  def get_params_from_session
-    session[:params] || params
+  def get_movies_from_session
+    if !session[:movies].blank?
+      params = YAML.load(session[:movies])
+    end
   end
 
-  def store_params_in_session
-    session[:params] = params
+  def store_movies_from_session
+    session[:movies] = @movies
   end
 
   public
