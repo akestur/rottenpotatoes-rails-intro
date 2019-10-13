@@ -6,9 +6,11 @@ class MoviesController < ApplicationController
   private
 
   def get_movies_from_session
-    session.clear
     if !session[:movies].blank?
       @movies = YAML.load(session[:movies])
+    end
+    if session[:movies].blank?
+      @movies = Movie.all
     end
   end
 
@@ -29,7 +31,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    # @movies = Movie.all
     @all_ratings = ['G','PG','PG-13','R']
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
