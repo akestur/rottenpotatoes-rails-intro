@@ -17,11 +17,11 @@ class MoviesController < ApplicationController
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
 
-    if params[:ratings].blank?
-      if !session[:ratings].empty?
-        params[:ratings] = session[:ratings]
-      end
-    end
+    # if params[:ratings].blank?
+    #   if !session[:ratings].empty?
+    #     params[:ratings] = session[:ratings]
+    #   end
+    # end
 
     if params[:sort_order].blank?
       if !session[:sort_order].blank?
@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     end
 
     if (params[:ratings])
-      session[:ratings] = params[:ratings]
+      # session[:ratings] = params[:ratings]
       @curr_ratings = []
       @ratings_hash = params[:ratings]
       if @ratings_hash["G"]
