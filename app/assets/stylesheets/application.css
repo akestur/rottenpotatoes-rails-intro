@@ -14,7 +14,7 @@
  *= require_self
  */
 .hilite{
-  .bg-warning
+  background-color: #ccc;
 }
 
 .normal_header{
