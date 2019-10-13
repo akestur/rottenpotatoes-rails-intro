@@ -15,9 +15,13 @@ class MoviesController < ApplicationController
     if (params[:sort_order])
       @sort_type = params[:sort_order]
       if @sort_type == "title"
+        @title_toggle = highlight_header
+        @date_toggle = normal_header
         @movies = Movie.order(title: :asc)
       end
       if @sort_type == "release_date"
+        @title_toggle = normal_header
+        @date_toggle = highlight_header
         @movies = Movie.order(release_date: :asc)
       end
     end

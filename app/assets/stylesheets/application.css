@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
-#title_header{
+#highlight_header{
   background-color: #ccc;
+}
+
+#normal_header{
+  background_color: #white;
 }
