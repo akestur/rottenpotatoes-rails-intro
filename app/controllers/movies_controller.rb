@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
     end
     flash[:notice] = @all_ratings
     if !(params[:ratings])
-      @movies = Movie.where(rating: @curr_ratings)
+      @movies = Movie.where(rating: @all_ratings)
     end
   end
 
