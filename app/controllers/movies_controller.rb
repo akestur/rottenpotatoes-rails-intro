@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
       if @sort_type == "release_date"
           @movies = Movie.order(release_date: :asc)
       end
+    end
     @movies = Movie.all
   end
 
