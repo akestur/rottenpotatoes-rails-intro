@@ -11,6 +11,14 @@ class MoviesController < ApplicationController
   end
 
   def index
+    if (params[:sort_order])
+      @sort_type = params[:sort_order]
+      if @sort_type == :title
+        @movies = Movie.order(title: :asc)
+      end
+      if @sort_type == :release_date
+          @movies = Movie.order(release_date: :asc)
+      end
     @movies = Movie.all
   end
 
@@ -42,19 +50,6 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
-  # def sorter
-  #   @sort_col = Movie.find params[:sort_order]
-  #   @movies = Movie.order(@sort_col: :asc)
-  #   # Movie.delete_all
-  #   # flash[:notice] = @movies
-  #   @movies.each do |movie|
-  #     @movie_del = Movie.find(movie['id'])
-  #     @movie_del.destroy
-  #     Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
-  #   end
-  #   redirect_to movies_path
-  # end
-
 
   def title_sorter
     @movies = Movie.order(title: :asc)
@@ -67,17 +62,17 @@ class MoviesController < ApplicationController
     end
     redirect_to movies_path
   end
-
-  def release_date_sorter
-    @movies = Movie.order(release_date: :asc)
-    # Movie.delete_all
-    # flash[:notice] = @movies
-    @movies.each do |movie|
-      @movie_del = Movie.find(movie['id'])
-      @movie_del.destroy
-      Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
-    end
-    redirect_to movies_path
-  end
+  #
+  # def release_date_sorter
+  #   @movies = Movie.order(release_date: :asc)
+  #   # Movie.delete_all
+  #   # flash[:notice] = @movies
+  #   @movies.each do |movie|
+  #     @movie_del = Movie.find(movie['id'])
+  #     @movie_del.destroy
+  #     Movie.create!(:title => movie['title'], :rating => movie['rating'], :description => movie['description'], :release_date => movie['release_date'])
+  #   end
+  #   redirect_to movies_path
+  # end
 
 end
