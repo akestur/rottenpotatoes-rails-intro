@@ -6,7 +6,6 @@ class MoviesController < ApplicationController
   private
 
   def get_movies_from_session
-    session.clear
     @movies = Movie.all
     if !session[:movies].blank?
       @movies = YAML.load(session[:movies])
