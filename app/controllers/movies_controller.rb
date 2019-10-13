@@ -6,10 +6,7 @@ class MoviesController < ApplicationController
   private
 
   def get_params_from_session
-    if !session[:params].blank?
-      #params = YAML.load(session[:params])
-      params = session[:params]
-    end
+    session[:params] || params
   end
 
   def store_params_in_session
@@ -66,7 +63,6 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
-    store_params_in_session
   end
 
   def new
