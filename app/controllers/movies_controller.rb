@@ -43,10 +43,12 @@ class MoviesController < ApplicationController
       if @ratings_hash["R"]
         @curr_ratings << "R"
       end
-      @all_ratings = @curr_ratings
+      @movies = Movie.where(rating: @curr_ratings)
     end
     flash[:notice] = @all_ratings
-    @movies = Movie.where(rating: @all_ratings)
+    if !(params[:ratings])
+      @movies = Movie.where(rating: @curr_ratings)
+    end
   end
 
   def new
