@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
 
   def get_movies_from_session
     if !session[:movies].blank?
-      params = YAML.load(session[:movies])
+      @movies = YAML.load(session[:movies])
     end
   end
 
