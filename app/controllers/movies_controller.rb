@@ -1,20 +1,20 @@
 class MoviesController < ApplicationController
 
-  before_action :get_movies_from_session
-  after_action  :store_movies_from_session
-
-  private
-
-  def get_movies_from_session
-    @movies = Movie.all
-    if !session[:movies].blank?
-      @movies = YAML.load(session[:movies])
-    end
-  end
-
-  def store_movies_from_session
-    session[:movies] = @movies.to_yaml
-  end
+  # before_action :get_movies_from_session
+  # after_action  :store_movies_from_session
+  #
+  # private
+  #
+  # def get_movies_from_session
+  #   @movies = Movie.all
+  #   if !session[:movies].blank?
+  #     @movies = YAML.load(session[:movies])
+  #   end
+  # end
+  #
+  # def store_movies_from_session
+  #   session[:movies] = @movies.to_yaml
+  # end
 
   public
 
