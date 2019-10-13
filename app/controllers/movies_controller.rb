@@ -28,6 +28,7 @@ class MoviesController < ApplicationController
         @movies = Movie.order(release_date: :asc)
       end
     end
+    flash[:notice] = params
   end
 
   def new
