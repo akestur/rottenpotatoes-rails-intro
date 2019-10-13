@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     if (params[:sort_order])
+      flash[:notice] = params[:sort_order]
       @sort_type = params[:sort_order]
       if @sort_type == "title"
         @movies = Movie.order(title: :asc)
