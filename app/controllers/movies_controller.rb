@@ -42,7 +42,7 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
-  def sorter
+  def title_sorter
     @movies = Movie.order(title: :asc)
     # Movie.delete_all
     # flash[:notice] = @movies
