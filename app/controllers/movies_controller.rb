@@ -23,6 +23,7 @@ class MoviesController < ApplicationController
       end
     end
     @movies = Movie.all
+    redirect_to movies_path
   end
 
   def new
