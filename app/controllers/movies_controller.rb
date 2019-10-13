@@ -15,13 +15,13 @@ class MoviesController < ApplicationController
     if (params[:sort_order])
       @sort_type = params[:sort_order]
       if @sort_type == "title"
-        @title_toggle = "p-3 mb-2 bg-warning text-dark"
-        @date_toggle = "normal_header"
+        @title_toggle = "hilite"
+        @date_toggle = "p-3 mb-2 bg-warning text-dark"
         @movies = Movie.order(title: :asc)
       end
       if @sort_type == "release_date"
-        @title_toggle = "normal_header"
-        @date_toggle = "p-3 mb-2 bg-warning text-dark"
+        @title_toggle = "p-3 mb-2 bg-warning text-dark"
+        @date_toggle = "hilite"
         @movies = Movie.order(release_date: :asc)
       end
     end
