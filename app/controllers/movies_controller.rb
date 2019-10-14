@@ -22,11 +22,11 @@ class MoviesController < ApplicationController
     #   end
     # end
 
-    # if params[:sort_order].blank?
-    #   if !session[:sort_order].blank?
-    #     params[:sort_order] = session[:sort_order]
-    #   end
-    # end
+    if params[:sort_order].blank?
+      if !session[:sort_order].blank?
+        params[:sort_order] = session[:sort_order]
+      end
+    end
 
 
     if (params[:ratings])
@@ -52,7 +52,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where(rating: @all_ratings)
     end
     if (params[:sort_order])
-      # session[:sort_order] = params[:sort_order]
+      session[:sort_order] = params[:sort_order]
       @sort_type = params[:sort_order]
       if @sort_type == "title"
         @title_toggle = "hilite"
