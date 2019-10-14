@@ -18,8 +18,10 @@ class MoviesController < ApplicationController
 
     if params[:ratings].blank?
       if !session[:ratings].blank?
+        if params[:ratings] != session[:ratings]
+          @redirect = true
+        end
         params[:ratings] = session[:ratings]
-        @redirect = true
       end
     end
 
