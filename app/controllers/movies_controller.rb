@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
     end
 
 
-    if (params[:ratings])
+    if (params[:ratings].length > 0)
       session[:ratings] = params[:ratings]
       @curr_ratings = []
       @ratings_hash = params[:ratings]
@@ -48,7 +48,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where(rating: @curr_ratings)
       flash[:notice] = "filtered"
     end
-    if !(params[:ratings])
+    if !(params[:ratings]) || params[:ratings].length == 0
       @movies = Movie.where(rating: @all_ratings)
       flash[:notice] = "all"
     end
