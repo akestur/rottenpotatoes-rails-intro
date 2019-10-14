@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
 
     if params[:ratings].blank?
       if !session[:ratings].blank?
-        #params[:ratings] = session[:ratings]
+        params[:ratings] = session[:ratings]
       end
     end
 
@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
 
 
     if (params[:ratings])
-      session[:ratings] = params[:ratings]
+      # session[:ratings] = params[:ratings]
       @curr_ratings = []
       @ratings_hash = params[:ratings]
       if @ratings_hash["G"]
