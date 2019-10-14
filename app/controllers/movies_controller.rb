@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
 
     if params[:ratings].blank?
       if !session[:ratings].blank?
-        params[:ratings] = session[:ratings]
+        #params[:ratings] = session[:ratings]
       end
     end
 
