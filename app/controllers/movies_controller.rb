@@ -45,12 +45,12 @@ class MoviesController < ApplicationController
       if @ratings_hash["R"]
         @curr_ratings << "R"
       end
-      flash[:notice] = @ratings_hash
       @movies = Movie.where(rating: @curr_ratings)
-      flash[:notice] = @movies
+      flash[:notice] = "filtered"
     end
     if !(params[:ratings])
       @movies = Movie.where(rating: @all_ratings)
+      flash[:notice] = "all"
     end
     if (params[:sort_order])
       session[:sort_order] = params[:sort_order]
