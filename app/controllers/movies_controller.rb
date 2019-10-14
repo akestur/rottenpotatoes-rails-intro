@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
     if params[:ratings].blank?
       if !session[:ratings].blank?
         params[:ratings] = session[:ratings]
+        @redirect = true
       end
     end
 
@@ -47,7 +48,9 @@ class MoviesController < ApplicationController
       end
       flash[:notice] = @ratings_hash
       @movies = Movie.where(rating: @curr_ratings)
-      redirect_to movies_path
+      if @redirect == true
+        redirect_to movies_path
+      end
     end
     if !(params[:ratings])
       @movies = Movie.where(rating: @all_ratings)
