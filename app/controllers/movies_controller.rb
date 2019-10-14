@@ -16,6 +16,8 @@ class MoviesController < ApplicationController
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
 
+    @redirect = false
+
     if params[:ratings].blank?
       if !session[:ratings].blank?
         if params[:ratings] != session[:ratings]
