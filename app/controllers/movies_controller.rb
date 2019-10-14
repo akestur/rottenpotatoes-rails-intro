@@ -16,11 +16,11 @@ class MoviesController < ApplicationController
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
 
-    # if params[:ratings].blank?
-    #   if !session[:ratings].empty?
-    #     params[:ratings] = session[:ratings]
-    #   end
-    # end
+    if params[:ratings].blank?
+      if !session[:ratings].nil?
+        params[:ratings] = session[:ratings]
+      end
+    end
 
     if params[:sort_order].blank?
       if !session[:sort_order].blank?
