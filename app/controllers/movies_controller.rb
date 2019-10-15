@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    session.clear
     @movies =  Movie.all
     @all_ratings = ['G','PG','PG-13','R']
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
@@ -27,8 +28,6 @@ class MoviesController < ApplicationController
         params[:sort_order] = session[:sort_order]
       end
     end
-
-    flash[:notice] = params
 
     if (params[:ratings])
       session[:ratings] = params[:ratings]
