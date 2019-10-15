@@ -29,7 +29,6 @@ class MoviesController < ApplicationController
       if session.has_key? :ratings
         redirect = true
         params[:ratings] = session[:ratings]
-        # @redirect_ratings = session[:ratings]
       end
     end
 
@@ -37,24 +36,12 @@ class MoviesController < ApplicationController
       if session.has_key? :sort_order
         redirect = true
         params[:sort_order] = session[:sort_order]
-        # @redirect_sort = sessions[:sort_order]
       end
     end
 
     if redirect
       redirect_to movies_path params
     end
-
-    # if @ratings_redirect and @sort_redirect
-    #   redirect_to params
-    # end
-    # if @ratings_redirect
-    #   redirect_to params
-    # end
-    # if @sort_redirect
-    #   flash.keep
-    #   redirect_to params
-    # end
 
     if (params[:ratings])
       session[:ratings] = params[:ratings]
