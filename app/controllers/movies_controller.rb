@@ -16,23 +16,19 @@ class MoviesController < ApplicationController
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
 
-    @redirect = false
-
-    if params[:ratings].blank?
-      if !session[:ratings].blank?
-        if params[:ratings] != session[:ratings]
-          @redirect = true
-        end
+    if !params.has_key? :ratings
+      if session.has_key? :ratings
         params[:ratings] = session[:ratings]
       end
     end
 
-    if params[:sort_order].blank?
-      if !session[:sort_order].blank?
+    if !params.has_key? :sort_order
+      if session.has_key? :sort_order
         params[:sort_order] = session[:sort_order]
       end
     end
 
+    flash[:notice] = params
 
     if (params[:ratings])
       session[:ratings] = params[:ratings]
@@ -50,11 +46,7 @@ class MoviesController < ApplicationController
       if @ratings_hash["R"]
         @curr_ratings << "R"
       end
-      flash[:notice] = @ratings_hash
       @movies = Movie.where(rating: @curr_ratings)
-      if @redirect == true
-        redirect_to movies_path
-      end
     end
     if !(params[:ratings])
       @movies = Movie.where(rating: @all_ratings)
