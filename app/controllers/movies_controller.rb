@@ -35,13 +35,13 @@ class MoviesController < ApplicationController
     end
 
     if @ratings_redirect and @sort_redirect
-      redirect_to movie_path(:ratings => @redirect_ratings, :sort_order => @redirect_sort)
+      redirect_to movies_path(:ratings => @redirect_ratings, :sort_order => @redirect_sort)
     end
     if @ratings_redirect
-      redirect_to movie_path(:ratings => @redirect_ratings)
+      redirect_to movies_path(:ratings => @redirect_ratings)
     end
     if @sort_redirect
-      redirect_to movie_path(:sort_order => @redirect_sort)
+      redirect_to movies_path(:sort_order => @redirect_sort)
     end
 
     if (params[:ratings])
