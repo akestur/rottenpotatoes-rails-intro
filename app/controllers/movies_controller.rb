@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
     # @ratings_redirect = false
     if !params.has_key? :ratings
       if session.has_key? :ratings
-        @ratings_redirect = true
+        # @ratings_redirect = true
         params[:ratings] = session[:ratings]
         # @redirect_ratings = session[:ratings]
       end
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
     # @sort_redirect = false
     if !params.has_key? :sort_order
       if session.has_key? :sort_order
-        @sort_redirect = true
+        # @sort_redirect = true
         params[:sort_order] = session[:sort_order]
         # @redirect_sort = sessions[:sort_order]
       end
