@@ -34,16 +34,16 @@ class MoviesController < ApplicationController
       end
     end
 
-    if @ratings_redirect and @sort_redirect
-      redirect_to params
-    end
-    if @ratings_redirect
-      redirect_to params
-    end
-    if @sort_redirect
-      flash.keep
-      redirect_to params
-    end
+    # if @ratings_redirect and @sort_redirect
+    #   redirect_to params
+    # end
+    # if @ratings_redirect
+    #   redirect_to params
+    # end
+    # if @sort_redirect
+    #   flash.keep
+    #   redirect_to params
+    # end
 
     if (params[:ratings])
       session[:ratings] = params[:ratings]
