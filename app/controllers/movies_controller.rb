@@ -41,7 +41,8 @@ class MoviesController < ApplicationController
       redirect_to params
     end
     if @sort_redirect
-      redirect_to params 
+      flash.keep
+      redirect_to params
     end
 
     if (params[:ratings])
