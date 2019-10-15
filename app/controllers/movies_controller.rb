@@ -16,6 +16,14 @@ class MoviesController < ApplicationController
     @title_toggle = "p-3 mb-2 bg-warning text-dark"
     @date_toggle = "p-3 mb-2 bg-warning text-dark"
 
+    if !session.has_key? :ratings and params.has_key? :ratings
+      session[:ratings] = params[:ratings]
+    end
+
+    if !session.has_key? :sort_order and params.has_key? :sort_order
+      session[:sort_order] = params[:sort_order]
+    end
+
     redirect = false
     if !params.has_key? :ratings
       if session.has_key? :ratings
@@ -25,7 +33,6 @@ class MoviesController < ApplicationController
       end
     end
 
-    redirect = false
     if !params.has_key? :sort_order
       if session.has_key? :sort_order
         redirect = true
@@ -34,9 +41,9 @@ class MoviesController < ApplicationController
       end
     end
 
-    # if redirect
-    #   redirect_to params
-    # end
+    if redirect
+      redirect_to params
+    end
 
     # if @ratings_redirect and @sort_redirect
     #   redirect_to params
