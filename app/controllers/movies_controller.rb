@@ -19,12 +19,14 @@ class MoviesController < ApplicationController
     if !params.has_key? :ratings
       if session.has_key? :ratings
         params[:ratings] = session[:ratings]
+        redirect_to params
       end
     end
 
     if !params.has_key? :sort_order
       if session.has_key? :sort_order
         params[:sort_order] = session[:sort_order]
+        redirect_to params
       end
     end
 
