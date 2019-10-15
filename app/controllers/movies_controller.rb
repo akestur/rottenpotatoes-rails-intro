@@ -34,9 +34,9 @@ class MoviesController < ApplicationController
       end
     end
 
-    if redirect
-      redirect_to params
-    end
+    # if redirect
+    #   redirect_to params
+    # end
 
     # if @ratings_redirect and @sort_redirect
     #   redirect_to params
